@@ -16,6 +16,17 @@ public class HumanInfantryFactory extends InfantryFactory{
             character = new SpearThrower(10, 10, 20, 20);
             //character.setRace("Human");
             break;
+        case 3:
+            character = new Musketeer(10, 10, 15, 15);
+            //character.setRace("Human");
+            break;
+        case 4:
+            character = new CrossbowMan(15, 10, 15, 20);
+            //character.setRace("Human");
+            break;
+        case 5:
+            character = new Archer(20, 10, 20, 20);
+            //character.setRace("Human");
     }
     return character;
     }
