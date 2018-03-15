@@ -6,6 +6,8 @@ public abstract class InfantryUnit {
     private int armor;
     private int hits;
     private int damage;
+    private String race;
+    private String name;
 
     public InfantryUnit(int range, int armor, int hits, int damage) {
         this.range = range;
@@ -27,4 +29,27 @@ public abstract class InfantryUnit {
         unit.takeDamage(attackDamage);
         System.out.println("Unit dealt "+attackDamage + " damage.");
     }
-}
+    public boolean alive() {
+        boolean alive = true;
+        if (hits < 0) {
+            alive = false;
+        }
+        return alive;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        }
+    }

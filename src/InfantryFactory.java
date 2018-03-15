@@ -1,6 +1,6 @@
 /**
  * @author Niels on 15-03-2018.
  */
-public class InfantryFactory {
-
+public abstract class InfantryFactory {
+    public abstract InfantryUnit createUnit(int techLevel);
 }

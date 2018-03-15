@@ -3,7 +3,6 @@
 public class HumanInfantryFactory extends InfantryFactory{
 
 
-
     public InfantryUnit createUnit(int techLevel) {
     InfantryUnit character = null;
 
@@ -21,7 +20,7 @@ public class HumanInfantryFactory extends InfantryFactory{
             //character.setRace("Human");
             break;
         case 4:
-            character = new CrossbowMan(15, 10, 15, 20);
+            character = new CrossbowMan(15, 10, 10, 10);
             //character.setRace("Human");
             break;
         case 5:
