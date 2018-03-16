@@ -2,10 +2,11 @@
  * @author Niels on 15-03-2018.
  */
 public abstract class InfantryUnit {
-    private int range;
-    private int armor;
-    private int hits;
-    private int damage;
+
+    private static int range;
+    private static int armor;
+    private static int hits;
+    private static int damage;
     private String race;
     private String name;
 
@@ -23,12 +24,12 @@ public abstract class InfantryUnit {
             System.out.println("Armor took " + reduction + " damage.");
         }
     }
-
-    public void attack(InfantryUnit unit) {
+    public static void attack(InfantryUnit unit) {
         int attackDamage = (int) (Math.random() * damage) + 1;
         unit.takeDamage(attackDamage);
         System.out.println("Unit dealt "+attackDamage + " damage.");
     }
+
     public boolean alive() {
         boolean alive = true;
         if (hits < 0) {
@@ -52,4 +53,24 @@ public abstract class InfantryUnit {
     public void setName(String name) {
         this.name = name;
         }
+
+    public int getRange() {
+        return range;
     }
+
+    public int getArmor() {
+        return armor;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+}

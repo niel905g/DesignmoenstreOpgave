@@ -8,7 +8,7 @@ public class HumanInfantryFactory extends InfantryFactory{
 
     switch (techLevel){
         case 1:
-            character = new RockHauler(3,5,20,7); //range, armor, hits, damage
+            character = new RockHauler(3,5,10,10); //range, armor, hits, damage
             //character.setRace("Human");
             break;
         case 2:
@@ -20,7 +20,7 @@ public class HumanInfantryFactory extends InfantryFactory{
             //character.setRace("Human");
             break;
         case 4:
-            character = new CrossbowMan(15, 10, 10, 10);
+            character = new CrossbowMan(15, 10, 10, 15);
             //character.setRace("Human");
             break;
         case 5:
