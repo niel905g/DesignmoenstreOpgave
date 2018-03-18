@@ -3,7 +3,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Nu starter spillet - Tæsk til dem allesammen, hehe - May the best man win!");
+        System.out.println("Nu starter spillet - May the best man win!");
 
         Random random = new Random();
         int randomTal;
@@ -14,11 +14,41 @@ public class Main {
   RockHauler rockHauler = new RockHauler();
   SpearThrower spearThrower = new SpearThrower();
 
-
  //     archer.attack(crossbowMan);
 //      crossbowMan.attack(archer);
 
-        while (archer.getHits() > 0 || crossbowMan.getHits() > 0 || musketeer.getHits() > 0 || rockHauler.getHits() > 0 || spearThrower.getHits() > 0) {
+        InfantryFactory humanFactory = FactoryFactory.createInfantryFactory(1);
+        InfantryFactory orcFactory = FactoryFactory.createInfantryFactory(2);
+
+        // The factories are producing units
+        InfantryUnit soldierA = humanFactory.createUnit(1); // unit 1 -- rockhauler
+        soldierA.setName("Conan");
+        InfantryUnit soldierB = orcFactory.createUnit(2); // unit 2 -- spearthrower
+        soldierB.setName("Orcgrim");
+
+        // The units are fighting for death
+        while (soldierA.alive() && soldierB.alive()) {
+            soldierA.attack(soldierB);
+            soldierB.attack(soldierA);
+        }
+
+        // The battle results are announced
+        System.out.println("***************************************");
+        if (!soldierA.alive()) {
+            if (!soldierB.alive()) {
+                System.out.println("It's a draw");
+            } else {
+                System.out.println(soldierB.getRace() + " " + soldierB.getName() + " " + soldierB.getClass().getSimpleName() + " wins!");
+            }
+        } else {
+            System.out.println(soldierA.getRace() + " " + soldierA.getName() + " " + soldierA.getClass().getSimpleName() + " wins!");
+        }
+        System.out.println("***************************************");
+    }
+
+}
+
+ /*       while (archer.getHits() > 0 || crossbowMan.getHits() > 0 || musketeer.getHits() > 0 || rockHauler.getHits() > 0 || spearThrower.getHits() > 0) {
 
             randomTal = random.nextInt(4);
 
@@ -139,9 +169,9 @@ public class Main {
                 if (archer.getHits() < 0 && crossbowMan.getHits() < 0 && spearThrower.getHits() < 0 && musketeer.getHits() < 0) {
                     System.out.println("RockHauler har vundet!");
                     System.exit(0);
-                }
+                }*
             }
         }
     }
-}
+}*/
 

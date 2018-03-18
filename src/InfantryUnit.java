@@ -17,17 +17,34 @@ public abstract class InfantryUnit {
         this.damage = damage;
     }
 
+    public InfantryUnit(String race, String name) {
+        this.race = race;
+        this.name = name;
+    }
+
+
     public void takeDamage(int damage) {
         int reduction = (int) (Math.random() * armor);
         if (damage > reduction) {
             hits = hits - (damage - reduction);
             System.out.println("Armor took " + reduction + " damage.");
-        }
+        } else {System.out.println("Armor is taking all damage!"); }
     }
-    public static void attack(InfantryUnit unit) {
+
+    public void attack(InfantryUnit unit) {
+        System.out.println(name + " attached " + unit.getName());
         int attackDamage = (int) (Math.random() * damage) + 1;
         unit.takeDamage(attackDamage);
-        System.out.println("Unit dealt "+attackDamage + " damage.");
+        System.out.println(unit.name + " dealt "+ attackDamage +
+                " damage (hits). Remaining: " + unit.hits);
+    }
+    @Override
+    public String toString() {
+        String strAlive = "(ALIVE)";
+        if (!this.alive()) {
+            strAlive = "(DEAD)";
+        }
+        return "Hero " + name + " " + strAlive + " armor: " + armor + " damage: " + damage + " hits: " + hits;
     }
 
     public boolean alive() {
@@ -52,25 +69,5 @@ public abstract class InfantryUnit {
 
     public void setName(String name) {
         this.name = name;
-        }
-
-    public int getRange() {
-        return range;
-    }
-
-    public int getArmor() {
-        return armor;
-    }
-
-    public int getHits() {
-        return hits;
-    }
-
-    public void setHits(int hits) {
-        this.hits = hits;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 }
