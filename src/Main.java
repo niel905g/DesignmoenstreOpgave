@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Nu starter spillet - May the best man win!");
 
-        Random random = new Random();
-        int randomTal;
+//        Random random = new Random();
+  //      int randomTal;
 
   Archer archer = new Archer();
   CrossbowMan crossbowMan = new CrossbowMan();

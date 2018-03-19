@@ -3,13 +3,22 @@
  */
 public abstract class InfantryUnit {
 
-    private static int range;
-    private static int armor;
-    private static int hits;
-    private static int damage;
-    private String race;
     private String name;
+    private int range;
+    private int armor;
+    private int hits;
+    private int damage;
+    private String race;
 
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    // Range is not imlemented yet
     public InfantryUnit(int range, int armor, int hits, int damage) {
         this.range = range;
         this.armor = armor;
@@ -17,27 +26,22 @@ public abstract class InfantryUnit {
         this.damage = damage;
     }
 
-    public InfantryUnit(String race, String name) {
-        this.race = race;
-        this.name = name;
-    }
-
-
     public void takeDamage(int damage) {
         int reduction = (int) (Math.random() * armor);
         if (damage > reduction) {
             hits = hits - (damage - reduction);
             System.out.println("Armor took " + reduction + " damage.");
-        } else {System.out.println("Armor is taking all damage!"); }
+        } else { System.out.println("Armor is taking all damage!");}
     }
 
     public void attack(InfantryUnit unit) {
-        System.out.println(name + " attached " + unit.getName());
+        System.out.println(name + " attacked " + unit.getName());
         int attackDamage = (int) (Math.random() * damage) + 1;
         unit.takeDamage(attackDamage);
-        System.out.println(unit.name + " dealt "+ attackDamage +
+        System.out.println(unit.name + " dealt " + attackDamage +
                 " damage (hits). Remaining: " + unit.hits);
     }
+
     @Override
     public String toString() {
         String strAlive = "(ALIVE)";
@@ -55,14 +59,6 @@ public abstract class InfantryUnit {
         return alive;
     }
 
-    public String getRace() {
-        return race;
-    }
-
-    public void setRace(String race) {
-        this.race = race;
-    }
-
     public String getName() {
         return name;
     }
@@ -70,4 +66,5 @@ public abstract class InfantryUnit {
     public void setName(String name) {
         this.name = name;
     }
+
 }
